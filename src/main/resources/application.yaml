@@ -1,0 +1,82 @@
+server:
+ port: 8080
+ shutdown: graceful
+
+spring:
+  application:
+    name: api-market
+
+  liquibase:
+    enabled: true
+    change-log: "classpath:/db/changelog-master.xml"
+    contexts: default
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+  main:
+    banner-mode: off
+  jpa:
+    database: postgresql
+    show-sql: false
+    format-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQL91Dialect
+  datasource:
+    url: ${database.url:jdbc:postgresql://${postgres.host:localhost}:${postgres.port:5432}/${postgres.database:tech_store}}
+    username: ${database.username:tribal}
+    password: ${database.password:Tribal22}
+    driverClassName: org.postgresql.Driver
+
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+
+jwt:
+  expire_time: 60000000
+  expire_time_admin: 600000000
+
+otp:
+  expire_time: 300000
+
+header:
+  author:
+    token: x-access-token
+
+  value:
+    access:
+      default: jfojsdoifdfad
+    admin:
+      default: idkcoajkvkaivdjoia
+  internal:
+    token: "eyJoZWFkZXIiOjUwMCwidHlwIjoiSldUIiwiYWxnIjoiUlM1MTIifQeyJzdWIiOiJVc2VyIiwiYXVkIjoiYXV0aGVudGljYXRpb24gdG8gY2FsbCBhcGkiLCJwYXlsb2FkIjoxMDAwLCJpc3MiOiJtYW5oaGFkMzJAZ21haWwuY29tIiwiZXhwIjoxNjQ1NzE0OTU4LCJpYXQiOjE2NDU3MTQ5NTgsImVtYWlsIjoxfQbOTFFpw6ej9wAHsnV2H1ViBHNVDwnmYAGhswfUAqH4SeWD-eBRwFlEFGs-qPlAvflBfEPgeuowW9yZpCo_D1fvJU6qVRti-kaEfWtPGd8KUxFFm7ARy0vojQwH3pLXXRRhW3kaDWIvpqxCvH6KtkNBaYLxsgMtksiUCObvkQRRNE4g815IlG95aSNqKY6vREhI97VTHcGJmJ7wZO1yVp9cpqcMd1sXfss-TTSSvn5NWKoMQsZGcOO1MrOOkq_iRA_jQbMseQSzIzWBYuYzst5utTYi2q9WrWdS-p9vLBkXCRlz-o4FwInAux48IXtvpzPxx9REMtI9_oMRc16QMZFg"
+
+
+limit:
+  reset-code-in-day: 3
+
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
+springdoc:
+  swagger-ui:
+    path: index.html
+
+logging:
+  file: log/marketplace.log
+  file.max-size: 500MB
+
+sentry:
+  dsn:
+  environment: local
+  debug: false
+  traces-sample-rate: 1.0
+
+environment:
+  env: ${ENV:local}
