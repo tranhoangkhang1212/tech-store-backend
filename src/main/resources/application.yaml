@@ -53,9 +53,6 @@ header:
       default: jfojsdoifdfad
     admin:
       default: idkcoajkvkaivdjoia
-  internal:
-    token: "eyJoZWFkZXIiOjUwMCwidHlwIjoiSldUIiwiYWxnIjoiUlM1MTIifQeyJzdWIiOiJVc2VyIiwiYXVkIjoiYXV0aGVudGljYXRpb24gdG8gY2FsbCBhcGkiLCJwYXlsb2FkIjoxMDAwLCJpc3MiOiJtYW5oaGFkMzJAZ21haWwuY29tIiwiZXhwIjoxNjQ1NzE0OTU4LCJpYXQiOjE2NDU3MTQ5NTgsImVtYWlsIjoxfQbOTFFpw6ej9wAHsnV2H1ViBHNVDwnmYAGhswfUAqH4SeWD-eBRwFlEFGs-qPlAvflBfEPgeuowW9yZpCo_D1fvJU6qVRti-kaEfWtPGd8KUxFFm7ARy0vojQwH3pLXXRRhW3kaDWIvpqxCvH6KtkNBaYLxsgMtksiUCObvkQRRNE4g815IlG95aSNqKY6vREhI97VTHcGJmJ7wZO1yVp9cpqcMd1sXfss-TTSSvn5NWKoMQsZGcOO1MrOOkq_iRA_jQbMseQSzIzWBYuYzst5utTYi2q9WrWdS-p9vLBkXCRlz-o4FwInAux48IXtvpzPxx9REMtI9_oMRc16QMZFg"
-
 
 limit:
   reset-code-in-day: 3

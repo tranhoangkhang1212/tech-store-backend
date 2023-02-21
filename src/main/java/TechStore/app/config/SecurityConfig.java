@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 .antMatchers("/v3/api-docs/**").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers("/actuator/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/marketplace/sell-nft/detail/**").permitAll()
+                .antMatchers("/api/testing/**").permitAll()
                 .antMatchers("/**").authenticated().and().httpBasic().authenticationEntryPoint(unauthorizedTokenException).and()
                 // And filter other requests to
                 .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);

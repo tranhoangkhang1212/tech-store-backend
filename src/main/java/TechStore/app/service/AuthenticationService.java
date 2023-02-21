@@ -11,7 +11,5 @@ public interface AuthenticationService {
 
     Authentication getAuthentication(HttpServletRequest request, String role, boolean isEmployee, boolean isInternal);
 
-    Authentication getAuthorInternalLevel(HttpServletRequest request);
-
     Authentication getAuthentication(String path, HttpServletRequest httpServletRequest, boolean isEmployee);
 }

@@ -1,6 +1,6 @@
 package TechStore.app.service.impl;
 
-import TechStore.app.Mapper.impl.ProductMapper;
+import TechStore.app.mapper.impl.ProductMapper;
 import TechStore.app.dto.response.ProductResponseDto;
 import TechStore.app.entity.Product;
 import TechStore.app.repository.ProductRepository;
@@ -24,8 +24,7 @@ public class ProductServiceImpl implements ProductService {
     @Transactional(readOnly = true)
     @Override
     public List<ProductResponseDto> getAllProduct() {
-        List<Product> productData;
-        productData = productRepository.findAll();
+        List<Product> productData = productRepository.findAll();
         return productMapper.toListDto((productData));
     }
 }

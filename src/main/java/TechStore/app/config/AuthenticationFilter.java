@@ -57,13 +57,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         if (match(path, adminLevel, String::startsWith)) {
             authentication = authenticationForAdminLevel(path, httpServletRequest);
         } else {
-            if (match(path, internalAuthorLevel, String::startsWith)) {
-                authentication = authenticationService.getAuthorInternalLevel(httpServletRequest);
-            } else {
-                if (match(path, customerLevel, String::startsWith) || match(path, internalGame, String::startsWith)) {
-                    authentication = authenticationForCustomerLevel(path, httpServletRequest);
-                }
-            }
+            authentication = authenticationForCustomerLevel(path, httpServletRequest);
         }
         return authentication;
     }

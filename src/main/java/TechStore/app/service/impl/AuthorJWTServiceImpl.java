@@ -236,12 +236,15 @@ public class AuthorJWTServiceImpl implements AuthorJWTService {
 
     private Algorithm getAlgorithmUser() {
         if(algorithmUser == null) {
-            MarketPlaceKey marketPlaceKeyUser = marketPlaceKeyRepository.findByCode(ConstantApi.MARKET_PLACE_SECRET_USER);
-            if(ObjectUtils.isEmpty(marketPlaceKeyUser)) {
-                throw new RequestInvalidException(EMessage.SYSTEM_ERROR);
-            }
+//            MarketPlaceKey marketPlaceKeyUser = marketPlaceKeyRepository.findByCode(ConstantApi.MARKET_PLACE_SECRET_USER);
+//            if(ObjectUtils.isEmpty(marketPlaceKeyUser)) {
+//                throw new RequestInvalidException(EMessage.SYSTEM_ERROR);
+//            }
             try {
-                algorithmUser = EncryptUtil.getAlgorithmCustom(marketPlaceKeyUser.getPrivateKey(), marketPlaceKeyUser.getPublicKey());
+//                algorithmUser = EncryptUtil.getAlgorithmCustom(marketPlaceKeyUser.getPrivateKey(), marketPlaceKeyUser.getPublicKey());
+                algorithmUser = EncryptUtil.getAlgorithmCustom(
+                        "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDjPoNMKId/e9bdvSQc8aFKJCKA3rs9Llp0PuzobYnBm6wNwTN0vPHOZcHg+WsOTRvCR/qq/in3kT6hsKWrc7E8M05O6kIrk9P5pAxanV2cNES8u2cmvLudlKlWqIAYmY0BQgA7N8REoFRWSxSweMkO8/+LnWdwdB6aHF+esOxwsoPO6Fw2s1BqQD06/V4uKO2M+qQVk9OjRuRRYnJacTV47ImNP08wtY0le5qSe4rkJQB292HOkwJqBzFp+tl6mZj7lnwqf+T+zvQeLPWL747xY/XZgHx4VoxjLXM/yhlrCrfwgfNYY1ZKW6rESxE6dFZvxijf1vQgJd+4aCB6tUpfAgMBAAECggEAS+tLpDr6Ic4217fkA8N6NjHiURmYhnUhBSssrO5Dkqo2jhXY4gxp4KHAZzAM4ydBueOgTFZDoREmUpCYmLI7KTie1eCPoM1viTyUYAWpC5Gu0Tru2FM/fwL2nBwJR66tHBl3yFD2QlMqOfY1gEuqKFO+MV+x+jDhNG18SKElLPTlvkX8UqHL7/uqgv56+J3r6afH5OoAQ8APEoRTNJWF8ogk3CtMn0+CR5AFmT0FpxJfWGIMK1b9PEu0SLwhwiSsvjr8kUh77MqzlLZVY8CVIWWXPglWJmkR+PiDSGTlqGKnsDJ18fjVs6iqhhaakaCvxE5kTzVWUwQWxIYD2N0BaQKBgQDrxE+o69glFbBx3AbztNenWfk+di6liqxmrBQvIwHXlLn8nixMPlWpzjlgn9T6lczDt0EJQ0fYUJw2z3FHlIIDu0u3xYncSC51ky4fZ8QbZKGiaOwsFeBZC8xKOTYSyWvqZwK2cY2sR4ySlhG0QITXUGzwTLWs5rR5hL7ThZ07ywKBgQD2vvaI467caSf/TMIJELh5i2PfqEhSWz67lYdA4RFy9cUMfeRoslLGNADXhShuDADGZ1OcWqn+LiAbcRtvhUaiNQkhNCJMU3JXSZonb5iiWpReRWS2h8TTbhR943bsagg39f+jva5G6gFtVmWZQieyOp/em7FaxQHtuvE2/T7BPQKBgQCGH8j9nSX6eutE6todnHyunNXZPdxtmoVXZ3+YDT9ICDkCSG2E9lU/Y61qlaLQ55V0pfTesyLVIY6s87hK82Y/fzalFkDGS136zz8G6L48ozP8s9nffpaBsd+HPiLP7zxwPifh6JmjL5T981ehBq9L2loPHmSgNyLmmqkAplt7nwKBgEFnxTnsAIH0beHCmvyELiIpzMOQe/s4rJxUupF8F3/9ncn95PnLqx1W05JNfbYOAHaXFRaxAbaay2/6v2cEUQDWRiFDDIRm6jwxCmfBsRf4IrQKePPZcVcKKuxjyzZHtP4Ae08QDI5HoTE2YaAKZTNdTttXMd/5sNUvZJlK78ORAoGBAOdRnsNbfZ9jbF0D97yoBH5KbqFIUQLakchc4Nt+7WnTy7lfhVsNjZTX2wsN/Jh+niW7pNg6s868bggxjO+u3P7TL7KRTod0RpJcUoLMTodADY3+7OdBfEI/C9haQ2yGhXeeLmuS3ovADF7qMPQrIeC6CLaZ3l0npTXMHzbrYOOO",
+                        "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4z6DTCiHf3vW3b0kHPGhSiQigN67PS5adD7s6G2JwZusDcEzdLzxzmXB4PlrDk0bwkf6qv4p95E+obClq3OxPDNOTupCK5PT+aQMWp1dnDREvLtnJry7nZSpVqiAGJmNAUIAOzfERKBUVksUsHjJDvP/i51ncHQemhxfnrDscLKDzuhcNrNQakA9Ov1eLijtjPqkFZPTo0bkUWJyWnE1eOyJjT9PMLWNJXuaknuK5CUAdvdhzpMCagcxafrZepmY+5Z8Kn/k/s70Hiz1i++O8WP12YB8eFaMYy1zP8oZawq38IHzWGNWSluqxEsROnRWb8Yo39b0ICXfuGggerVKXwIDAQAB");
             } catch (Exception e) {
                 log.error("error to make algorithm user");
                 throw new RequestInvalidException(EMessage.SYSTEM_ERROR);

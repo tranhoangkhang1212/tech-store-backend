@@ -1,4 +1,4 @@
-package TechStore.app.Mapper;
+package TechStore.app.mapper;
 
 import java.util.List;
 

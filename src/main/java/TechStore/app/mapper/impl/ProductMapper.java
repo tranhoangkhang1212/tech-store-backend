@@ -1,6 +1,6 @@
-package TechStore.app.Mapper.impl;
+package TechStore.app.mapper.impl;
 
-import TechStore.app.Mapper.DtoMapper;
+import TechStore.app.mapper.DtoMapper;
 import TechStore.app.dto.response.ProductResponseDto;
 import TechStore.app.entity.Product;
 import org.springframework.beans.BeanUtils;

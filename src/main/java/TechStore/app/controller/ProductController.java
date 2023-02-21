@@ -3,7 +3,6 @@ package TechStore.app.controller;
 import TechStore.app.constant.ConstantApi;
 import TechStore.app.dto.response.ProductResponseDto;
 import TechStore.app.service.ProductService;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/marketplace/products", produces = ConstantApi.CONTENT_TYPE)
-@Api(value = "Admin Heroes History", tags = "Admin Heroes History")
 public class ProductController {
     @Autowired
     private ProductService productService;

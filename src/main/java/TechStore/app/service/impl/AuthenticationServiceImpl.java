@@ -21,12 +21,13 @@ import java.util.Collections;
 public class AuthenticationServiceImpl implements AuthenticationService {
     @Value("${header.author.token}")
     private String headerKeyAccess;
+
     @Value("${header.value.access.default}")
     private String valueAccessDefault;
+
     @Value("${header.value.admin.default}")
     private String valueAdminAccessDefault;
-    @Value("${header.internal.token}")
-    private String internalKeyAccess;
+
     @Autowired
     private AuthorJWTService authorJWTService;
 
@@ -90,27 +91,5 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
         return null;
     }
-
-    @Override
-    public Authentication getAuthorInternalLevel(HttpServletRequest request) {
-        String token = request.getHeader(headerKeyAccess);
-        //log.info("x-access-token: {}", token)
-        if (StringUtils.hasText(token)) {
-            if (token.equals(internalKeyAccess)) {
-                return new UsernamePasswordAuthenticationToken(ConstantApi.SYS_MARKETPLACE, null,
-                        Collections.emptyList());
-            }
-            try {
-                VerifyTokenDto verifyTokenDto = authorJWTService.verifyToken(token, false, true);
-                return new UsernamePasswordAuthenticationToken(verifyTokenDto.getEmail(), null,
-                        Collections.emptyList());
-            } catch (JWTVerifyException e) {
-                return null;
-            }
-        }
-
-        return null;
-    }
-
 
 }
